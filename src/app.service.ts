@@ -10,7 +10,7 @@ export class AppService {
   createSurvey(data) {
     const value=  this.survey_client.send(
       { cmd: 'create_survey' },
-      {data},
+      data,
     );
     console.log(value)
     return value
@@ -49,6 +49,13 @@ export class AppService {
     console.log(data,"sdkfjn");
     return this.survey_client.send(
       { cmd: 'create_question' }, 
+      data,
+    );
+  }
+
+  createQuestionType(data) {
+    return this.survey_client.send(
+      { cmd: 'create_question_type' }, 
       data,
     );
   }

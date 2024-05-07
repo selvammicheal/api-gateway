@@ -37,4 +37,9 @@ export class AppController {
   createQuestion(@Body() questionData) {
     return this.appService.createQuestion(questionData);
   }
+
+  @Post('question-type/create-question-type')
+  createQuestionType(@Body() questionTypeData) {
+    return this.appService.createQuestionType(questionTypeData);
+  }
 }
