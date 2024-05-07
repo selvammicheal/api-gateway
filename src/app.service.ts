@@ -8,17 +8,25 @@ export class AppService {
   ) { }
 
   createSurvey(data) {
-
-    return this.survey_client.send(
+    const value=  this.survey_client.send(
       { cmd: 'create_survey' },
-      { data },
+      {data},
+    );
+    console.log(value)
+    return value
+  }
+
+  getAllSurvey() {
+    return this.survey_client.send(
+      { cmd: 'get_all_survey' },
+      {},
     );
   }
 
-  getSurvey() {
+  getSurvey(id) {
     return this.survey_client.send(
       { cmd: 'get_survey' },
-      {},
+      id,
     );
   }
 
@@ -27,6 +35,21 @@ export class AppService {
       { cmd: "update_survey" },
       { id, data }
     )
-    // console.log(id, data)
+  }
+
+  getQuestionsBySection(id) {
+    console.log(id)
+    return this.survey_client.send(
+      { cmd: 'get_questions_by_section' },
+      id,
+    );
+  }
+
+  createQuestion(data) {
+    console.log(data,"sdkfjn");
+    return this.survey_client.send(
+      { cmd: 'create_question' }, 
+      data,
+    );
   }
 }
