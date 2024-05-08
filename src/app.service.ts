@@ -37,6 +37,13 @@ export class AppService {
     )
   }
 
+  createQuestion(data) {
+    return this.survey_client.send(
+      { cmd: 'create_question' }, 
+      data,
+    );
+  }
+
   getQuestionsBySection(id) {
     console.log(id)
     return this.survey_client.send(
@@ -45,12 +52,12 @@ export class AppService {
     );
   }
 
-  createQuestion(data) {
-    console.log(data,"sdkfjn");
+  updateQuestion(id: string, data) {
+    console.log(id,data)
     return this.survey_client.send(
-      { cmd: 'create_question' }, 
-      data,
-    );
+      { cmd: "update_question" },
+      { id, data }
+    )
   }
 
   createQuestionType(data) {
@@ -59,4 +66,26 @@ export class AppService {
       data,
     );
   }
+
+  getAllQuestionType() {
+    return this.survey_client.send(
+      { cmd: 'get_all_question_type' },
+      {},
+    );
+  }
+
+  createSection(data) {
+    return this.survey_client.send(
+      { cmd: 'create_section' },
+      data,
+    );
+  }
+
+  getAllSections() {
+    return this.survey_client.send(
+      { cmd: 'get_all_sections' },
+      {},
+    );
+  }
 }
+ 
