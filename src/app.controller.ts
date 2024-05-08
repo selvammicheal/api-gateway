@@ -8,6 +8,7 @@ import { updateQuestionDto } from './dto/question/update-question.dto';
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
+  // survey table
   @Post('survey/create-survey')
   createSurvey(@Body() surveyData: createSurveyDto) {
     return this.appService.createSurvey(surveyData);
@@ -28,6 +29,7 @@ export class AppController {
     return this.appService.updateSurvey(id, data);
   }
 
+  // question table
   @Post('question/create-question')
   createQuestion(@Body() questionData) {
     return this.appService.createQuestion(questionData);
@@ -43,6 +45,7 @@ export class AppController {
     return this.appService.updateQuestion(id, data);
   }
 
+  // question-type table
   @Post('question-type/create-question-type')
   createQuestionType(@Body() questionTypeData) {
     return this.appService.createQuestionType(questionTypeData);
@@ -53,6 +56,7 @@ export class AppController {
     return this.appService.getAllQuestionType(); 
   }
 
+  // section table
   @Post('section/create-section')
   createSection(@Body() sectionData) {
     return this.appService.createSection(sectionData);
