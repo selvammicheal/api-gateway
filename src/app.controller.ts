@@ -36,8 +36,8 @@ export class AppController {
   }
 
   @Get("question/get-all-questions/:id")
-  getQuestionsBySection(@Param("id") id: string,) {
-    return this.appService.getQuestionsBySection(id); 
+  getQuestionsBySurvey(@Param("id") id: string,) {
+    return this.appService.getQuestionsBySurvey(id); 
   }
 
   @Patch("question/update-question/:id")
@@ -62,9 +62,9 @@ export class AppController {
     return this.appService.createSection(sectionData);
   }
 
-  @Get("section/get-all-sections")
-  getAllSections() {
+  @Get("section/get-all-sections/:id")
+  getAllSections(@Param("id") id: string) {
     console.log("trigger")
-    return this.appService.getAllSections(); 
+    return this.appService.getAllSections(id); 
   }
 }

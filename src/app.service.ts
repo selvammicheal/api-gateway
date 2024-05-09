@@ -44,10 +44,10 @@ export class AppService {
     );
   }
 
-  getQuestionsBySection(id) {
+  getQuestionsBySurvey(id) {
     console.log(id)
     return this.survey_client.send(
-      { cmd: 'get_questions_by_section' },
+      { cmd: 'get_questions_by_survey' },
       id,
     );
   }
@@ -81,10 +81,10 @@ export class AppService {
     );
   }
 
-  getAllSections() {
+  getAllSections(id) {
     return this.survey_client.send(
       { cmd: 'get_all_sections' },
-      {},
+      id,
     );
   }
 }
