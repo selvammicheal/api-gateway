@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { ObjectId } from 'mongodb';
+import { updateQuestionTypeDto } from './dto/question/update-question-type.dto';
+import { updateQuestionDto } from './dto/question/update-question.dto';
 
 @Injectable()
 export class AppService {
@@ -53,11 +55,22 @@ export class AppService {
     );
   }
 
-  updateQuestion(id: string, data) {
+  updateQuestion(id: string, data: updateQuestionDto) {
     console.log(id,data)
     return this.survey_client.send(
       { cmd: "update_question" },
       { id, data }
+    )
+  }
+
+  updateQuestionType(id: string, data: updateQuestionTypeDto) {
+    if(!ObjectId.isValid(data.question_type_id)){
+      throw new Error("Object Id is invalid")
+    }
+    const value: ObjectId = data.question_type_id ;
+    return this.survey_client.send(
+      { cmd: "update_question_type" },
+      { id, value }
     )
   }
 

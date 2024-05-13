@@ -8,8 +8,4 @@ export class createSurveyDto {
     @IsNotEmpty({message: "Please enter a description"})
     @IsString({message: "Description should be string"})
     description: string
-
-    @IsNotEmpty()
-    @IsString()
-    ownerId: string
 }
