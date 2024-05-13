@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Inject, Post } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
-import { handleError } from "./error-handling";
+import { handleError } from "../error-handling";
 
 @Controller()
 export class QuestionTypeController {

@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Inject, Param, Patch, Post } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
-import { createSurveyDto } from "./dto/survey/create-survey.dto";
+import { createSurveyDto } from "../dto/survey/create-survey.dto";
 import { ObjectId } from "mongodb";
-import { updateSurveyDto } from "./dto/survey/update-survey.dto";
-import { updateQuestionDto } from "./dto/question/update-question.dto";
-import { updateQuestionTypeDto } from "./dto/question/update-question-type.dto";
-import { handleError } from "./error-handling";
+import { updateSurveyDto } from "../dto/survey/update-survey.dto";
+import { updateQuestionDto } from "../dto/question/update-question.dto";
+import { updateQuestionTypeDto } from "../dto/question/update-question-type.dto";
+import { handleError } from "../error-handling";
 
 @Controller()
 export class QuestionController {
