@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class AppService {
@@ -23,7 +24,7 @@ export class AppService {
     );
   }
 
-  getSurvey(id) {
+  getSurvey(id: ObjectId) {
     return this.survey_client.send(
       { cmd: 'get_survey' },
       id,

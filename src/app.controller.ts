@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { updateSurveyDto } from './dto/survey/update-survey.dto';
 import { createSurveyDto } from './dto/survey/create-survey.dto';
 import { updateQuestionDto } from './dto/question/update-question.dto';
+import { ObjectId } from 'mongodb';
 
 @Controller()
 export class AppController {
@@ -20,7 +21,7 @@ export class AppController {
   }
 
   @Get("survey/get-survey/:id")
-  getSurvey(@Param("id") id: string) {
+  getSurvey(@Param("id") id: ObjectId) {
     return this.appService.getSurvey(id);
   }
 
