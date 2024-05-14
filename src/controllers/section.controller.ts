@@ -15,22 +15,22 @@ export class SectionController {
                 sectionData,
             );
         } catch (err) {
-            handleError(err);
+            return handleError(err);
         }
     }
 
     @Get("section/get-all-sections/:id")
     getAllSectionsBySurvey(@Param("id") id: ObjectId) {
         try {
-            if (!ObjectId.isValid(id)) {
-                throw new Error("Object Id is invalid")
-            }
+            // if (!ObjectId.isValid(id)) {
+            //     throw new Error("Object Id is invalid")
+            // }
             return this.survey_client.send(
                 { cmd: 'get_all_sections' },
                 id,
             );
         } catch (err) {
-            handleError(err);
+            return handleError(err);
         }
     }
 }

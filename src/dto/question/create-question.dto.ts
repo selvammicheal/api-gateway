@@ -12,7 +12,7 @@ export class createQuestionDto {
     @IsString()
     question_type_id: string
 
-    option?: string
+    question_data?: string
 
     @IsNotEmpty({message: "section_id should not be empty"})
     @IsString()

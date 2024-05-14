@@ -4,6 +4,6 @@ export const handleError = (error) => {
         return { error: error.message };
     }
 
-    //Other errors
+    //Other errors like NotFoundException
     return error.response;
 }
