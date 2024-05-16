@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Param, Patch, Post } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
 import { createSurveyDto } from "../dto/survey/create-survey.dto";
 import { ObjectId } from "mongodb";
@@ -67,5 +67,13 @@ export class QuestionController {
         } catch (error) {
             handleError(error)
         }
+    }
+
+    @Delete('question/delete-question/:id')
+    async deleteQuestion(@Param('id') id: string) {
+        return this.survey_client.send(
+            { cmd: "delete_question" },
+            id
+        )
     }
 }

@@ -24,5 +24,5 @@ export class createQuestionDto {
 
     @IsNotEmpty({message: "mandatory should not be empty"})
     @IsBoolean()
-    mandatory: boolean
+    mandatory: boolean;
 }
