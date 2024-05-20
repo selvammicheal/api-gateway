@@ -8,7 +8,6 @@ export class SurveyResponseController {
 
     @Post('survey-response/submit-response')
     async submitResponseBySurvey(@Body() responses) {
-        console.log("INSODE")
         return await lastValueFrom(
             this.survey_client.send(
                 { cmd: 'submit_response_by_survey' },
