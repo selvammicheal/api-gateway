@@ -44,6 +44,20 @@ export class SurveyController {
         )
     }
 
+    @Get("survey/get-survey-name/:id")
+    async getSurveyName(@Param("id") id: ObjectId) {
+
+        if (!ObjectId.isValid(id)) {
+            throw new Error("Object Id is invalid")
+        }
+        return await lastValueFrom(
+            this.survey_client.send(
+                { cmd: 'get_survey-name' },
+                id,
+            )
+        )
+    }
+
     @Patch("survey/update-survey/:id")
     async updateSurvey(@Param("id") id: ObjectId, @Body() data: any) {
         if (!ObjectId.isValid(id)) {

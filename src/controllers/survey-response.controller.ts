@@ -20,19 +20,10 @@ export class SurveyResponseController {
     async getResponsesBySurvey(@Param("id") id: string) {
         return await lastValueFrom(
             this.survey_client.send(
-                { cmd: 'get_responses_by_survey' },
+                { cmd: 'get_survey_responses_by_survey' },
                 id,
             )
         )
     }
 
-    @Get("survey-response/get-responses-by-user/:id")
-    async getResponsesByUser(@Param("id") id: string) {
-        return await lastValueFrom(
-            this.survey_client.send(
-                { cmd: 'get_responses_by_user' },
-                id,
-            )
-        )
-    }
 }
