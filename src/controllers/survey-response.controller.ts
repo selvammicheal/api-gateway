@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Inject, Param, Post, Query } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
 import { lastValueFrom } from "rxjs";
 
@@ -22,6 +22,16 @@ export class SurveyResponseController {
             this.survey_client.send(
                 { cmd: 'get_survey_responses_by_survey' },
                 id,
+            )
+        )
+    }
+
+    @Get("survey-response/get-response")
+    async getResponse(@Query("id") surveyId: string, @Query("email") email: string) {
+        return await lastValueFrom(
+            this.survey_client.send(
+                { cmd: 'get_survey_response' },
+                {surveyId, email},
             )
         )
     }
