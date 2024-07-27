@@ -28,9 +28,21 @@ export class SurveyResponseController {
 
     @Get("survey-response/get-response")
     async getResponse(@Query("id") surveyId: string, @Query("email") email: string) {
+        console.log(email)
         return await lastValueFrom(
             this.survey_client.send(
                 { cmd: 'get_survey_response' },
+                {surveyId, email},
+            )
+        )
+    }
+
+    @Get("survey-response/check-if-survey-exists")
+    async checkIfSurveyExists(@Query("id") surveyId: string, @Query("email") email: string) {
+        console.log(email)
+        return await lastValueFrom(
+            this.survey_client.send(
+                { cmd: 'check_if_survey_exists' },
                 {surveyId, email},
             )
         )

@@ -48,15 +48,15 @@ export class QuestionController {
     }
 
     @Patch("question/update-question-type/:id")
-    async updateQuestionType(@Param("id") id: string, @Body() data: updateQuestionTypeDto) {
-        if (!ObjectId.isValid(data.question_type_id)) {
-            throw new Error("Object Id is invalid")
-        }
-        const value: ObjectId = data.question_type_id;
+    async updateQuestionType(@Param("id") id: string, @Body() data) {
+        // if (!ObjectId.isValid(data.question_type_id)) {
+        //     throw new Error("Object Id is invalid")
+        // }
+        // const value: ObjectId = data.question_type_id;
         return await lastValueFrom(
             this.survey_client.send(
                 { cmd: "update_question_type" },
-                { id, value }
+                { id, data }
             )
         )
     }
