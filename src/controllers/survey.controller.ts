@@ -20,12 +20,12 @@ export class SurveyController {
         return value;
     }
 
-    @Get("survey/get-all-survey")
-    async getAllSurvey() {
+    @Get("survey/get-all-survey/:type")
+    async getAllSurvey(@Param("type") type: string) {
         return await lastValueFrom(
             this.survey_client.send(
                 { cmd: 'get_all_survey' },
-                {},
+                type,
             )
         )
     }
